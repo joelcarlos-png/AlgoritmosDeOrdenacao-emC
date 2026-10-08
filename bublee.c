@@ -22,6 +22,7 @@ void trocar(int *a, int *b){
 }
 
 void BubbleSort(int *vet, int tam){
+    printf("\nExecucao: \n");
     for(int i = 0; i < tam - 1; i++){
         bool trocou = false;
         for(int j = 0; j < tam - i - 1; j++){
@@ -30,24 +31,32 @@ void BubbleSort(int *vet, int tam){
                 trocou = true;
             }
         }
+        mostrarVet(vet, tam);
         if(!trocou) break;
     }
+    printf("\n");
 }
 
 void SelectionSort(int *vet, int tam){
+    printf("\nExecucao: \n");
     for(int i = 0; i < tam - 1; i++){
         int indiceTroca = i;
         for(int j = i + 1; j < tam; j++) if(vet[j] < vet[indiceTroca]) indiceTroca = j;
         trocar(&vet[i], &vet[indiceTroca]);
+        mostrarVet(vet, tam);
     }
+    printf("\n");
 }
 
 void InsertionSort(int *vet, int tam){
+    printf("\nExecucao: \n");
     for (int i = 1; i < tam; i++) {
         int atual = vet[i], j;
         for (j = i - 1; j >= 0 && vet[j] > atual; j--) vet[j + 1] = vet[j];
         vet[j + 1] = atual;
+        mostrarVet(vet, tam);
     }
+    printf("\n");
 }
 
 void bubbleInvertido(int *vet, int tam){
