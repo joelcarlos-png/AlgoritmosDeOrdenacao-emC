@@ -76,10 +76,10 @@ int main(){
     int tam = 20;
     int vet[tam];
 
-    srand((unsigned) time(NULL));
+    srand(time(NULL));
 
     for(int i = 0; i < tam; i++){
-        vet[i] = rand() % 100;
+        vet[i] = rand() % 1000;
     }
 
     printf("Vetor para BubbleSort: \nAntes:  ");
@@ -91,7 +91,7 @@ int main(){
     else printf("Vetor NAO esta ordenado!!\n");
 
     for(int i = 0; i < tam; i++){
-        vet[i] = rand() % 100;
+        vet[i] = rand() % 1000;
     }
 
     printf("\nVetor para SelectionSort: \nAntes:  ");
@@ -103,7 +103,7 @@ int main(){
     else printf("Vetor NAO esta ordenado!!\n");
 
     for(int i = 0; i < tam; i++){
-        vet[i] = rand() % 100;
+        vet[i] = rand() % 1000;
     }
 
     printf("\nVetor para InsertionSort: \nAntes:  ");
