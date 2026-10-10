@@ -40,6 +40,24 @@ int *calcularSequencia(int tam, int *count){
 }
 
 void ShellSort(int *vet, int tam){
+    int tamSeq;
+    int *seq = calcularSequencia(tam, &tamSeq);
+    printf("\nSequencia Utilizada: ");
+    mostrarVet(seq, tamSeq);
+    
+    for(int i = tamSeq - 1; i >= 0; i--){
+        int pulo = seq[i];
+        for(int k = 0; k < pulo && k + pulo < tam; k++){
+            for(int p = 0; k + p * pulo < tam; p++){       
+                int atual = p;
+
+                while (atual > 0 && vet[k + (atual - 1) * pulo] > vet[k + atual * pulo]) {
+                    trocar(&vet[k + (atual - 1) * pulo], &vet[k + atual * pulo]);
+                    atual--;
+                }
+            }
+        }
+    }
 }
 
 int main(void){
@@ -51,8 +69,9 @@ int main(void){
         vet[i] = rand() % 100;
     }
 
-    int count;
-    int *seq = calcularSequencia(tam, &count);
-    printf("Sequencia utilizada: ");
-    mostrarVet(seq, count);
+    printf("Antes: ");
+    mostrarVet(vet, tam);    
+    ShellSort(vet, tam);
+    printf("Depois: ");
+    mostrarVet(vet, tam);
 }
