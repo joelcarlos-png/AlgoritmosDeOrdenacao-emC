@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdbool.h>
+#include <windows.h>
 
 void mostrarVet(int *vet, int tam){
     printf("[");
@@ -62,16 +63,43 @@ void ShellSort(int *vet, int tam){
 
 int main(void){
     int tam = 20;
-    int vet[tam];
+   int *vet = malloc(tam * sizeof(int));
+
+    if (vet == NULL) {
+        printf("Erro ao alocar memoria!\n");
+        return 1;
+    }
     
     srand(time(NULL));
     for(int i = 0; i < tam; i++){
         vet[i] = rand() % 100;
     }
 
-    printf("Antes: ");
-    mostrarVet(vet, tam);    
+    printf("Antes:  ");
+    mostrarVet(vet, tam);  
+    
+    clock_t inicio, fim;
+    double tempo;
+
+    inicio = clock();
     ShellSort(vet, tam);
+    fim = clock();
+
+    tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
+
     printf("Depois: ");
     mostrarVet(vet, tam);
+
+    double temp = tempo;
+    int casas = 0;
+    while(temp < 1.0 && temp > 0.0){
+        temp *= 10.0;
+        casas++;
+    }
+
+    if(tempo > 0.0){
+        printf("Tempo de execucao: %.*f",casas + 40,  tempo);
+    }else{
+        printf("Tempo de execucao: 0 segundos (Rapido demais para medir precisamente)");
+    }
 }
